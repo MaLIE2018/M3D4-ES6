@@ -139,9 +139,6 @@ const totalChart = () => {
 
 }
 
-
-
-
 // <!-- WINDOW-->
 
 // <!-- WINDOW-METHODS -->
