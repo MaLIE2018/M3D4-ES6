@@ -1,10 +1,10 @@
 .card {
     cursor: pointer;
-    transition: all 0.2s ease
+    transition: all 0.2s ease-in-out
 }
 
 .card:hover {
-    transform: scale(1.05)
+    transform: scale(1.01)
 }
 
 a {
@@ -16,3 +16,31 @@ a:hover {
     text-decoration: none;
     color: inherit;
 }
+
+.basket {
+    visibility: hidden;
+    width: auto;
+    right: 0;
+    top: 102%;
+    z-index: 1;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid #F5F5F5;
+    transition: all 0.2s ease;
+}
+
+.basket-container:hover .basket {
+    visibility: visible;
+    animation: slide-down 2s linear forwards;
+}
+
+@keyframes slide-down {
+    0% {
+        transform: translateY(0)
+    }
+    100% {
+        transform: translateY(100)
+    }
+}
+
+`

@@ -16,48 +16,49 @@
 <body>
     <div class="container d-flex justify-content-center">
         <div class="row">
-            <div class="col w-100">
+            <div class="col w-100 position-relative">
                 <nav class="navbar navbar-light bg-light sticky-top">
                     <span class="navbar-brand mb-0 h1">Bookstore</span>
-                    <form class="form-inline my-2 my-lg-0">
+                    <form class="form-inline my-2 my-lg-0 ml-auto">
                         <input class="search form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchBooks(event)">
-                        <button class="navbar-searchButton btn btn-outline-success my-2 my-sm-0"><ion-icon name="basket-outline"></ion-icon></button>
                     </form>
+                    <!-- Basket -->
+                    <div class="basket-container">
+                        <button class="basketButton btn btn-outline-success my-2 my-sm-0 position-relative"><ion-icon name="basket-outline"></ion-icon></button>
+                        <div class="basket position-absolute">
+                            <div class="ml-2 row d-flex align-items-center">
+                                <div class="col">
+                                    <h4>Basket</h4>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button class="btn btn-danger" onclick="emptyBasket()" style="margin-right: 37px;"><ion-icon name="trash-bin-outline"></ion-icon></button>
+                                </div>
+                            </div>
+                            <div class="ml-2 basket-row row my-2">
+                                <div class="col">
+                                    <ul class="basket-list list-group mr-3">
+                                        <li class="basket-total list-group-item">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="col d-flex"><span class="ml-auto mr-5 font-weight-bold"><span class="total font-weight-bold"></span> Total</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
                 <div class="row mt-4">
                     <!-- booklist -->
-                    <div class="booklist col-7">
+                    <div class="booklist col-12">
                         <h2>Search Results</h2>
                         <div class="row">
                         </div>
                     </div>
                     <!-- basket -->
-                    <div class="basket col-5">
-                        <div class="row d-flex align-items-center">
-                            <div class="col">
-                                <h4>Basket</h4>
-                            </div>
-                            <div class="col d-flex justify-content-end">
-                                <button class="btn btn-danger" onclick="emptyBasket()" style="margin-right: 37px;"><ion-icon name="trash-bin-outline"></ion-icon></button>
-                            </div>
-
-                        </div>
-                        <!-- Basket -->
-                        <div class="basket-row row mt-2">
-                            <div class="col">
-                                <ul class="basket-list list-group mr-3">
-                                    <li class="basket-total list-group-item">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="col d-flex"><span class="ml-auto mr-5 font-weight-bold"><span class="total font-weight-bold"></span> Total</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                </ul>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -58,7 +58,6 @@ const searchBooks = (event) => {
     const query = searchfield.value
     if (query.length >= 3) {
         filteredBooks = books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
-        console.log('filteredBooks:', filteredBooks)
         booklist.querySelector(".row").innerHTML = ""
         createList(filteredBooks)
         filteredBooks = []
@@ -88,32 +87,55 @@ const addToCart = (button) => {
             </div>
         </li>` + basket.querySelector(".basket-list").innerHTML
     booklist.querySelector(".row").removeChild(card.parentElement)
+
+    showBatchCartIndicator()
     totalChart()
+}
+
+//Control batch
+const showBatchCartIndicator = () => {
+    const basketButton = document.querySelector('.basketButton')
+    if (basketButton.querySelector(".badge") === null && basket.querySelector(".basket-list").children.length > 1) {
+        document.querySelector(".basketButton").innerHTML +=
+            `<span class="badge badge-danger rounded-circle position-absolute mt-1" style="z-index:1;top:-12px"><ion-icon name="information-circle-outline"></ion-icon></span>`
+    } else if (basket.querySelectorAll(".basket-list li:not(.basket-total)").length < 1) {
+        document.querySelector(".badge").remove()
+    }
 }
 
 // Delete Item from the Basket
 const deleteBookfromCart = (book) => {
     book.closest("li").remove()
     totalChart()
-
+    showBatchCartIndicator()
 }
 
 // Empty the list
 const emptyBasket = () => {
-    basket.querySelector(".basket-list").innerHTML = ""
+    [...basket.querySelectorAll(".basket-list li:not(.basket-total)")].map((ele) => ele.remove())
     totalChart()
-
+    showBatchCartIndicator()
 }
 
 // Total
 const totalChart = () => {
-    const prices = basket.querySelector(".basket-list").querySelectorAll(".price")
+    const prices = basket.querySelectorAll(".price")
+    console.log('prices:', prices)
+    if (prices.length !== 0) {
+        if (prices.length === 1) {
+            console.log('document.querySelector(".total").innerHTML:', document.querySelector(".total").innerText)
+            document.querySelector(".total").innerHTML = prices[0].innerHTML
+        } else {
+            document.querySelector(".total").innerHTML = "$" + ([...prices].reduce((acc, curr) => {
+                acc += parseFloat(curr.innerHTML.slice(1))
+                console.log(acc);
+                return acc
+            }, 0.0)).toFixed(2)
+        }
+    } else {
+        document.querySelector(".total").innerHTML = "$0.00"
+    }
 
-    document.querySelector(".total").innerHTML = "$" + ([...prices].reduce((acc, curr) => {
-        acc += parseFloat(curr.innerText.slice(1))
-        console.log(acc);
-        return acc
-    }, 0.0)).toFixed(2)
 
 }
 
