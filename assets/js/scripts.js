@@ -12,6 +12,7 @@ function getData() {
             books = data
             createList(books)
         })
+        .catch(err => showAlert("alert-danger", "Error", err.message))
 }
 
 // <!-- NAVIGATION -->
@@ -19,6 +20,20 @@ function getData() {
 const goToProductpage = (asin) => {
     sessionStorage.setItem('asin', asin);
     window.location.href = 'productpage.html'
+}
+
+// <!-- ALERTS -->
+const showAlert = (type, header, message) => {
+    const alertContainer = document.querySelector('.alert-container')
+    alertContainer.innerHTML =
+        `<div class="alert ${type} position-absolute alert-dismissible" role="alert" style="z-index: 1;top: 57px;">
+            <h4 class="alert-heading">${header}</h4>
+            <hr>
+            <p class="alert-result mb-0 mr-3">${message}</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>`
 }
 
 // <!-- BOOKLIST -->

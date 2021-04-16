@@ -3,6 +3,7 @@ function getData(asin) {
     fetch(`https://striveschool-api.herokuapp.com/books/${asin}`)
         .then((response) => response.json())
         .then(book => createProductCard(book))
+        .catch((error) => console.log(error.message))
 }
 
 

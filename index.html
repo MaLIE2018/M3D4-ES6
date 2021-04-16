@@ -16,8 +16,9 @@
 <body>
     <div class="container d-flex justify-content-center">
         <div class="row w-100">
+            <div class="alert-container position-absolute w-25"></div>
             <div class="col position-relative">
-                <nav class="navbar navbar-light bg-light sticky-top">
+                <nav class="navbar navbar-light bg-light sticky-top pr-3">
                     <span class="navbar-brand mb-0 h1">Bookstore</span>
                     <form class="form-inline my-2 my-lg-0 ml-auto">
                         <input class="search form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" onkeyup="searchBooks(event)">
@@ -31,7 +32,7 @@
                                     <h4>Basket</h4>
                                 </div>
                                 <div class="col d-flex justify-content-end">
-                                    <button class="btn btn-danger" onclick="emptyBasket()" style="margin-right: 37px;"><ion-icon name="trash-bin-outline"></ion-icon></button>
+                                    <button class="btn btn-danger" onclick="emptyBasket()" style="margin-right: 15px;"><ion-icon name="trash-bin-outline"></ion-icon></button>
                                 </div>
                             </div>
                             <div class="ml-2 basket-row row my-2">
